@@ -1,4 +1,8 @@
-export const isEqual = (a: any, b: any):boolean => {
+import { baseIsEqual } from "./baseIsEqual";
+
+// primitives comparison
+// delegates object comparison to baseIsEqual
+export const isEqual = (a: any, b: any): boolean => {
   if (a === b) {
     // handle +0, -0
     // +0 === -0  true
@@ -14,5 +18,5 @@ export const isEqual = (a: any, b: any):boolean => {
   // Number.isNaN(0/0)              true
   // Number.isNan(Number.sqrt(-1))  true
   if (Number.isNaN(a) && Number.isNaN(b)) return true;
-  return false;
+  return baseIsEqual(a, b);
 };

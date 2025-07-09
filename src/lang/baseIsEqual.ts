@@ -2,17 +2,9 @@ import { getTag } from "./getTag";
 import { equalArrays } from "./equalArrays";
 import { equalObjects } from "./equalObjects";
 
-// deep comparison on primitives and known objects
+// deep comparison on known objects
 // unknown objects fallback with shallow comparison
 export const baseIsEqual = (a: any, b: any) :boolean => {
-  // primitives comparison
-  if (a === b) {
-    // +0 !== -0
-    return a !== 0 || 1 / (a as number) === 1 / (b as number);
-  }
-  // handling NaN
-  if (a !== a && b !== b) return true;
-  
   // either one is null or undefined
   // null == undefined == null
   // typeof null -> 'object' ([object Null])
