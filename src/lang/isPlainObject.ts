@@ -1,6 +1,7 @@
+import { getTag } from "./getTag";
 export const isPlainObject = (value: any): value is Record<string, any> => {
   // check if it's ab array, function, null or built-in objects (Date, Map...)
-  if (Object.prototype.toString.call(value) !== '[object Object]') return false;
+  if (getTag(value) !== '[object Object]') return false;
   
   // the proto tells what it's created from
   // - Object.prototype ({}, new Object())
