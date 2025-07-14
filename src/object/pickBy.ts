@@ -5,6 +5,8 @@
 // to exclude inherited keys
 
 export const pickBy = (object: Record<string, any>, predicate: (value: any, key: string) => boolean): Record<string, any> => {
+  // short circuit for null and undefined
+  if (object == null) return {};
   const result:Record<string, any> = {};
   for (const key in object) {
     // or if (Object.hasOwn(object, key))
